@@ -16,26 +16,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from hadoop.io import *
-
-def hadoopClassFromName(class_path):
-    if class_path.startswith('org.apache.hadoop.'):
-        class_path = class_path[11:]
-    return classFromName(class_path)
-
-def hadoopClassName(class_type):
-    module_name = class_type.__module__
-    class_name = class_type.__name__
-    if module_name.startswith('hadoop.io.'):
-        module_name, _, file_name = module_name.rpartition('.')
-        return 'org.apache.%s.%s' % (module_name, class_name)
-    return '%s.%s' % (module_name, class_name)
-
-def classFromName(class_path):
-    module_name, _, class_name = class_path.rpartition('.')
-    if not module_name:
-        raise ValueError('Class name must contain module part.')
-
-    module = __import__(module_name, globals(), locals(), [str(class_name)], -1)
-    return getattr(module, class_name)
+from CodecPool import *
 

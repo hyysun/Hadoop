@@ -372,6 +372,7 @@ class Reader(object):
         if not buf:
           return False
         key.readFields(buf)
+        #print 'in nextkey!'
         return True
 
     def nextRawValue(self):
@@ -501,5 +502,7 @@ class Reader(object):
     def _getCurrentValue(self, value):
         stream = self.nextRawValue()
         value.readFields(stream)
+        #print 'int get current value'
         if not self._block_compressed:
-            assert self._record.size() == 0
+            if self._decompress:
+                assert self._record.size() == 0

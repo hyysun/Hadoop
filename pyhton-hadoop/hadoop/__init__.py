@@ -18,4 +18,5 @@
 
 import io
 import util
+import typedbytes
 

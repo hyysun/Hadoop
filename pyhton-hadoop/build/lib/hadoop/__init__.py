@@ -16,17 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import OutputStream
-import InputStream
+import io
+import util
+import typedbytes
 
-import SequenceFile
-import ArrayFile
-import MapFile
-import SetFile
-
-from Writable import *
-from IntWritable import *
-from Text import *
-import WritableUtils
-
-import compress
